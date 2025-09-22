@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Libly</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="dashboard-header">
+            <h1>Welcome to your Library</h1>
+            <div class="user-info">
+                <span id="username"></span>
+                <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+            </div>
+        </header>
+        
+        <div class="dashboard-content">
+            <div class="stats-section">
+                <h2>Quick Stats</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 id="totalUsers">0</h3>
+                        <p>Total Users</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>📚</h3>
+                        <p>Books (Coming Soon)</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>⭐</h3>
+                        <p>Reviews (Coming Soon)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="users-section">
+                <h2>Registered Users</h2>
+                <button id="refreshUsers" class="btn btn-primary">Refresh Users</button>
+                <div id="usersList" class="users-list"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="dashboard.js"></script>
+</body>
+</html>

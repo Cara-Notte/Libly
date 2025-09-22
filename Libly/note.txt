@@ -1,0 +1,5 @@
+npm i list:
+nodemon
+--save-dev nodemon
+express
+bcrypt
