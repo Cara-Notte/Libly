@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "bookName": "To Kill a Mockingbird",
+    "authorName": "Harper Lee",
+    "sypnosis": "A young girl grows up in a racially divided Southern town.",
+    "genre": "Fiction",
+    "totalAmount": 12,
+    "ongoingBorrows": 3
+  },
+  {
+    "id": 2,
+    "bookName": "1984",
+    "authorName": "George Orwell",
+    "sypnosis": "A dystopian world under constant surveillance and control.",
+    "genre": "Dystopian",
+    "totalAmount": 15,
+    "ongoingBorrows": 5
+  },
+  {
+    "id": 3,
+    "bookName": "Pride and Prejudice",
+    "authorName": "Jane Austen",
+    "sypnosis": "A romantic clash between Elizabeth Bennet and Mr. Darcy.",
+    "genre": "Romance",
+    "totalAmount": 10,
+    "ongoingBorrows": 2
+  },
+  {
+    "id": 4,
+    "bookName": "The Great Gatsby",
+    "authorName": "F. Scott Fitzgerald",
+    "sypnosis": "A critique of the American Dream through the life of Jay Gatsby.",
+    "genre": "Classic",
+    "totalAmount": 8,
+    "ongoingBorrows": 1
+  },
+  {
+    "id": 5,
+    "bookName": "Moby-Dick",
+    "authorName": "Herman Melville",
+    "sypnosis": "Captain Ahab’s obsession with hunting a giant whale.",
+    "genre": "Adventure",
+    "totalAmount": 6,
+    "ongoingBorrows": 0
+  },
+  {
+    "id": 6,
+    "bookName": "The Catcher in the Rye",
+    "authorName": "J.D. Salinger",
+    "sypnosis": "A teenager’s struggle with identity and alienation in New York.",
+    "genre": "Coming-of-Age",
+    "totalAmount": 11,
+    "ongoingBorrows": 4
+  },
+  {
+    "id": 7,
+    "bookName": "The Hobbit",
+    "authorName": "J.R.R. Tolkien",
+    "sypnosis": "Bilbo Baggins embarks on an adventure to reclaim treasure.",
+    "genre": "Fantasy",
+    "totalAmount": 20,
+    "ongoingBorrows": 7
+  },
+  {
+    "id": 8,
+    "bookName": "Harry Potter and the Sorcerer's Stone",
+    "authorName": "J.K. Rowling",
+    "sypnosis": "A young wizard begins his journey at Hogwarts.",
+    "genre": "Fantasy",
+    "totalAmount": 25,
+    "ongoingBorrows": 10
+  },
+  {
+    "id": 9,
+    "bookName": "The Lord of the Rings: The Fellowship of the Ring",
+    "authorName": "J.R.R. Tolkien",
+    "sypnosis": "A fellowship forms to destroy the One Ring.",
+    "genre": "Fantasy",
+    "totalAmount": 18,
+    "ongoingBorrows": 6
+  },
+  {
+    "id": 10,
+    "bookName": "The Da Vinci Code",
+    "authorName": "Dan Brown",
+    "sypnosis": "A symbologist unravels secrets hidden in art and history.",
+    "genre": "Thriller",
+    "totalAmount": 14,
+    "ongoingBorrows": 5
+  },
+  {
+    "id": 11,
+    "bookName": "The Alchemist",
+    "authorName": "Paulo Coelho",
+    "sypnosis": "A shepherd follows his dream in search of treasure.",
+    "genre": "Philosophical",
+    "totalAmount": 13,
+    "ongoingBorrows": 2
+  },
+  {
+    "id": 12,
+    "bookName": "Brave New World",
+    "authorName": "Aldous Huxley",
+    "sypnosis": "A future society driven by technology and conformity.",
+    "genre": "Dystopian",
+    "totalAmount": 9,
+    "ongoingBorrows": 1
+  },
+  {
+    "id": 13,
+    "bookName": "Crime and Punishment",
+    "authorName": "Fyodor Dostoevsky",
+    "sypnosis": "A man wrestles with guilt after committing murder.",
+    "genre": "Psychological",
+    "totalAmount": 7,
+    "ongoingBorrows": 0
+  },
+  {
+    "id": 14,
+    "bookName": "The Hunger Games",
+    "authorName": "Suzanne Collins",
+    "sypnosis": "A dystopian contest where children fight to the death.",
+    "genre": "Dystopian",
+    "totalAmount": 17,
+    "ongoingBorrows": 8
+  },
+  {
+    "id": 15,
+    "bookName": "The Maze Runner",
+    "authorName": "James Dashner",
+    "sypnosis": "Teenagers trapped in a mysterious maze struggle to survive.",
+    "genre": "Science Fiction",
+    "totalAmount": 12,
+    "ongoingBorrows": 3
+  },
+  {
+    "id": 16,
+    "bookName": "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",
+    "authorName": "C.S. Lewis",
+    "sypnosis": "Four siblings discover a magical world inside a wardrobe.",
+    "genre": "Fantasy",
+    "totalAmount": 16,
+    "ongoingBorrows": 5
+  },
+  {
+    "id": 17,
+    "bookName": "Jane Eyre",
+    "authorName": "Charlotte Brontë",
+    "sypnosis": "An orphaned governess falls in love with her employer.",
+    "genre": "Romance",
+    "totalAmount": 8,
+    "ongoingBorrows": 1
+  },
+  {
+    "id": 18,
+    "bookName": "Frankenstein",
+    "authorName": "Mary Shelley",
+    "sypnosis": "A scientist creates a living creature with tragic results.",
+    "genre": "Horror",
+    "totalAmount": 10,
+    "ongoingBorrows": 2
+  },
+  {
+    "id": 19,
+    "bookName": "The Shining",
+    "authorName": "Stephen King",
+    "sypnosis": "A family is haunted by supernatural forces in a hotel.",
+    "genre": "Horror",
+    "totalAmount": 11,
+    "ongoingBorrows": 4
+  },
+  {
+    "id": 20,
+    "bookName": "A Game of Thrones",
+    "authorName": "George R.R. Martin",
+    "sypnosis": "Noble families vie for power in the land of Westeros.",
+    "genre": "Fantasy",
+    "totalAmount": 22,
+    "ongoingBorrows": 9
+  }
+]
