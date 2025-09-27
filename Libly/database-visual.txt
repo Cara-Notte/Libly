@@ -1,0 +1,55 @@
+OPEN https://dbdiagram.io/d
+
+Table users {
+  username varchar [primary key]
+  name varchar(100)
+  gender char(1) //CHECK (gender IN ('M','F')) add it later
+  phone_number varchar(20)
+  birthdate date
+  email varchar
+  password varchar
+  address varchar
+}
+
+Table book {
+  id integer [primary key]
+  bookName varchar(100)
+  authorName varchar
+  sypnosis varchar
+  genre varchar
+  totalAmount integer
+  ongoingBorrows integer
+}
+
+Table borrowBooks {
+  id integer [primary key]
+  book_id integer [not null]       // FK from book.id
+  user_username varchar [not null] // FK from users.username
+  status varchar
+  borrowed_at timestamp
+  return_at timestamp
+}
+
+Table history {
+  id integer [primary key]         // PK
+  book_id integer [not null]       // FK from book.id
+  user_username varchar [not null] // FK from users.username
+  borrowed_at timestamp
+  return_at timestamp
+  rating integer //CHECK (rating >= 1 AND rating <= 10) add it later
+}
+
+Table recommendations {
+  id integer [primary key]
+  book_id integer [not null]   // FK from book.id
+  name varchar(100)    
+}
+
+
+Ref: borrowBooks.user_username > users.username
+Ref: borrowBooks.book_id > book.id
+
+Ref: history.user_username > users.username
+Ref: history.book_id > book.id
+
+Ref: recommendations.book_id > book.id
