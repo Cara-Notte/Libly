@@ -7,18 +7,41 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header class="dashboard-header">
-            <h1>Welcome to your Library</h1>
-            <div class="user-info">
-                <span id="username"></span>
-                <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Libly</a>
+            
+            <div class="nav-center">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search books, authors, or members...">
+                </div>
             </div>
-        </header>
-        
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="about.html" class="nav-item">About</a>
+                <!-- Profile dropdown will be added by navigation.js -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Welcome Header -->
+        <div class="dashboard-header">
+            <h1>Welcome Back!</h1>
+            <div class="user-welcome">
+                <span id="username">Loading...</span>
+            </div>
+        </div>
+
+        <!-- Dashboard Content -->
         <div class="dashboard-content">
-            <div class="stats-section">
-                <h2>Quick Stats</h2>
+            <!-- Stats Section -->
+            <div class="section-card">
+                <h2>📊 Quick Statistics</h2>
                 <div class="stats-grid">
                     <div class="stat-card">
                         <h3 id="totalUsers">0</h3>
@@ -32,17 +55,25 @@
                         <h3>⭐</h3>
                         <p>Reviews (Coming Soon)</p>
                     </div>
+                    <div class="stat-card">
+                        <h3>🎯</h3>
+                        <p>Goals (Coming Soon)</p>
+                    </div>
                 </div>
             </div>
             
-            <div class="users-section">
-                <h2>Registered Users</h2>
-                <button id="refreshUsers" class="btn btn-primary">Refresh Users</button>
-                <div id="usersList" class="users-list"></div>
+            <!-- Users Section -->
+            <div class="section-card">
+                <h2>👥 Community Members</h2>
+                <button id="refreshUsers" class="btn btn-primary" style="margin-bottom: 1rem;">Refresh Users</button>
+                <div id="usersList" class="users-list">
+                    <p>Loading users...</p>
+                </div>
             </div>
         </div>
     </div>
-    
+
+    <script src="navigation.js"></script>
     <script src="dashboard.js"></script>
 </body>
 </html>

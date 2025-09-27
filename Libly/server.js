@@ -38,7 +38,12 @@ function saveUsers() {
 loadUsers()
 
 app.get('/users', (req, res) => {
-  res.json(users)
+  // Remove sensitive information and return only public profile data
+  const publicUsers = users.map(user => ({
+      username: user.username,
+      createdAt: user.createdAt
+  }));
+  res.json(publicUsers);
 })
 
 app.post('/users', async (req, res) => {
@@ -92,7 +97,8 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
-app.listen(3000, () => {
-    console.log('Libly server running on http://localhost:3000')
-    console.log('Visit http://localhost:3000 to access the application')
+const PORT = process.env.PORT || 5000
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Libly server running on http://0.0.0.0:${PORT}`)
+    console.log(`Visit http://0.0.0.0:${PORT} to access the application`)
 })

@@ -7,30 +7,61 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="auth-form">
-            <h2>Login to Libly</h2>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Libly</a>
+            
+            <div class="nav-center">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search books, authors, or members...">
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="about.html" class="nav-item">About</a>
+                <!-- Authentication buttons/profile dropdown will be added by navigation.js -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Form Container -->
+    <div class="auth-container">
+        <div class="auth-form fade-in">
+            <h2>Welcome Back to Libly</h2>
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required autocomplete="username">
                 </div>
                 <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
                 </div>
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    Sign In
+                </button>
             </form>
             
             <div class="auth-links">
-                <p>Don't have an account? <a href="register.html">Register here</a></p>
+                <p>Don't have an account? <a href="register.html">Create one here</a></p>
                 <a href="index.html">← Back to Home</a>
             </div>
             
-            <div id="message" class="message"></div>
+            <div id="message" class="message" style="display: none;"></div>
         </div>
     </div>
-    
+
+    <script src="navigation.js"></script>
     <script src="auth.js"></script>
+    <script>
+        // Fade-in animation
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.auth-form').style.opacity = '1';
+            document.querySelector('.auth-form').style.transform = 'translateY(0)';
+        });
+    </script>
 </body>
 </html>

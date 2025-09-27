@@ -3,31 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libly - Welcome</title>
+    <title>Libly - Your Personal Library Management System</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Libly</h1>
-            <p>Your personal library management system</p>
-        </header>
-        
-        <nav class="nav-buttons">
-            <a href="login.html" class="btn btn-primary">Login</a>
-            <a href="register.html" class="btn btn-secondary">Register</a>
-        </nav>
-        
-        <div class="features">
-            <div class="feature-card">
-                <h3>Organize</h3>
-                <p>Keep track of your books and reading progress</p>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Libly</a>
+            
+            <div class="nav-center">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search books, authors, or members...">
+                </div>
             </div>
-            <div class="feature-card">
-                <h3>Community</h3>
-                <p>Connect with other book enthusiasts</p>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item active">Home</a>
+                <a href="about.html" class="nav-item">About</a>
+                <!-- Authentication buttons/profile dropdown will be added by navigation.js -->
             </div>
         </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero fade-in">
+            <h1>Welcome to Libly</h1>
+            <p>Your personal library management system that helps you organize, track, and discover books with an elegant and intuitive interface.</p>
+            
+            <div class="hero-buttons">
+                <a href="register.html" class="btn btn-primary">Get Started</a>
+                <a href="about.html" class="btn btn-secondary">Learn More</a>
+            </div>
+        </section>
+
+        <!-- Feature Cards -->
+        <section class="features">
+            <div class="feature-card fade-in">
+                <h3>📚 Organize Your Collection</h3>
+                <p>Keep track of your books, reading progress, and create custom shelves to organize your library exactly how you want it.</p>
+            </div>
+            
+            <div class="feature-card fade-in">
+                <h3>👥 Join the Community</h3>
+                <p>Connect with other book enthusiasts, share recommendations, and discover your next favorite read through our vibrant community.</p>
+            </div>
+            
+            <div class="feature-card fade-in">
+                <h3>📈 Track Your Progress</h3>
+                <p>Monitor your reading habits, set goals, and celebrate your achievements with detailed statistics and progress tracking.</p>
+            </div>
+            
+            <div class="feature-card fade-in">
+                <h3>🔍 Smart Search</h3>
+                <p>Find any book quickly with our powerful search functionality that works across titles, authors, genres, and more.</p>
+            </div>
+        </section>
     </div>
+
+    <script src="navigation.js"></script>
+    <script>
+        // Add fade-in animation on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
 </body>
 </html>

@@ -6,14 +6,20 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
     
-    document.getElementById('username').textContent = `Hello, ${currentUser}!`;
+    // Update UI with user info (XSS-safe)
+    const usernameElement = document.getElementById('username');
+    if (usernameElement) {
+        usernameElement.textContent = `Hello, ${currentUser}!`; // Already safe, but making it explicit
+    }
     
-    document.getElementById('logoutBtn').addEventListener('click', handleLogout);
-    document.getElementById('refreshUsers').addEventListener('click', loadUsers);
-    
+    // Load initial data
     loadUsers();
+    
+    // Add event listeners
+    document.getElementById('refreshUsers').addEventListener('click', loadUsers);
 });
 
+// Load users function
 async function loadUsers() {
     try {
         const response = await fetch('/users');
@@ -24,12 +30,15 @@ async function loadUsers() {
             updateUserCount(users.length);
         } else {
             console.error('Failed to load users');
+            document.getElementById('usersList').innerHTML = '<p>Failed to load users.</p>';
         }
     } catch (error) {
         console.error('Network error:', error);
+        document.getElementById('usersList').innerHTML = '<p>Network error. Please try again.</p>';
     }
 }
 
+// Display users function
 function displayUsers(users) {
     const usersList = document.getElementById('usersList');
     
@@ -38,33 +47,41 @@ function displayUsers(users) {
         return;
     }
     
-    const usersHTML = users.map((user, index) => {
+    // Clear existing content
+    usersList.innerHTML = '';
+    
+    // Create user items safely (XSS prevention)
+    users.forEach((user, index) => {
         const createdDate = user.createdAt 
             ? new Date(user.createdAt).toLocaleDateString() 
             : 'Unknown';
         
-        return `
-            <div class="user-item">
-                <div>
-                    <strong>${user.username}</strong>
-                    <small>User #${index + 1}</small>
-                </div>
-                <div>
-                    <small>Joined: ${createdDate}</small>
-                </div>
-            </div>
-        `;
-    }).join('');
-    
-    usersList.innerHTML = usersHTML;
+        const userItem = document.createElement('div');
+        userItem.className = 'user-item';
+        
+        const userInfo = document.createElement('div');
+        const userName = document.createElement('strong');
+        userName.textContent = user.username; // Safe: textContent prevents XSS
+        
+        const userNumber = document.createElement('small');
+        userNumber.textContent = `Member #${index + 1}`;
+        
+        userInfo.appendChild(userName);
+        userInfo.appendChild(document.createElement('br'));
+        userInfo.appendChild(userNumber);
+        
+        const joinDate = document.createElement('div');
+        const joinDateSmall = document.createElement('small');
+        joinDateSmall.textContent = `Joined: ${createdDate}`;
+        joinDate.appendChild(joinDateSmall);
+        
+        userItem.appendChild(userInfo);
+        userItem.appendChild(joinDate);
+        usersList.appendChild(userItem);
+    });
 }
 
+// Update user count
 function updateUserCount(count) {
     document.getElementById('totalUsers').textContent = count;
-}
-
-function handleLogout() {
-    localStorage.removeItem('currentUser');
-    
-    window.location.href = 'index.html';
 }
