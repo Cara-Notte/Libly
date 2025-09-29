@@ -1,0 +1,253 @@
+Enum user_role {
+  member
+  librarian
+  admin
+}
+
+Enum loan_status {
+  active
+  late
+  returned
+  lost
+}
+
+Table users {
+  id               bigint [pk, increment]
+  username         varchar(50) [not null, unique]
+  email            varchar(255) [unique]
+  password_hash    varchar(255) [not null]
+  role             user_role [not null, default: 'member']
+  is_active        boolean [not null, default: true]
+  created_at       datetime [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at       datetime [not null, default: `CURRENT_TIMESTAMP`]
+  last_login_at    datetime
+}
+
+Table user_identities {
+  id            bigint [pk, increment]
+  user_id       bigint [not null, ref: > users.id]
+  provider      varchar(50) [not null]
+  provider_uid  varchar(255) [not null]
+  created_at    datetime [not null, default: `CURRENT_TIMESTAMP`]
+
+  Indexes {
+    (provider, provider_uid) [unique]
+  }
+}
+
+Table authors {
+  id           bigint [pk, increment]
+  name         varchar(255) [not null]
+  bio          text
+  born_year    int
+  died_year    int
+  created_at   datetime [not null, default: `CURRENT_TIMESTAMP`]
+
+  Indexes {
+    name [type: fulltext] // for search
+  }
+}
+
+Table publishers {
+  id           bigint [pk, increment]
+  name         varchar(255) [not null, unique]
+  created_at   datetime [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table genres {
+  id           bigint [pk, increment]
+  name         varchar(100) [not null, unique]
+  parent_id    bigint [ref: > genres.id]
+  created_at   datetime [not null, default: `CURRENT_TIMESTAMP`]
+
+  Indexes {
+    name [type: fulltext]
+  }
+}
+
+Table books {
+  id               bigint [pk, increment]
+  title            varchar(500) [not null]
+  subtitle         varchar(500)
+  description      text
+  isbn_10          varchar(10)
+  isbn_13          varchar(13)
+  language_code    varchar(16)
+  page_count       int
+  release_date     date
+  publisher_id     bigint [ref: > publishers.id]
+  cover_url        text
+  created_at       datetime [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at       datetime [not null, default: `CURRENT_TIMESTAMP`]
+
+  Indexes {
+    title
+    (isbn_13) [unique]
+    (title, subtitle, description) [type: fulltext]
+  }
+}
+
+Table book_authors {
+  book_id      bigint [not null, ref: > books.id]
+  author_id    bigint [not null, ref: > authors.id]
+  author_order int    [not null, default: 1]
+
+  Indexes {
+    (book_id, author_id) [pk]
+    (author_id)
+  }
+}
+
+Table book_genres {
+  book_id   bigint [not null, ref: > books.id]
+  genre_id  bigint [not null, ref: > genres.id]
+
+  Indexes {
+    (book_id, genre_id) [pk]
+    (genre_id)
+  }
+}
+
+Table branches {
+  id           bigint [pk, increment]
+  name         varchar(255) [not null, unique]
+  address      text
+  phone        varchar(50)
+  created_at   datetime [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table book_copies {
+  id             bigint [pk, increment]
+  book_id        bigint [not null, ref: > books.id]
+  branch_id      bigint [not null, ref: > branches.id]
+  barcode        varchar(64) [not null, unique]
+  is_available   boolean [not null, default: true]
+  created_at     datetime [not null, default: `CURRENT_TIMESTAMP`]
+
+  Indexes {
+    (book_id, branch_id)
+  }
+}
+
+Table loans {
+  id             bigint [pk, increment]
+  user_id        bigint [not null, ref: > users.id]
+  copy_id        bigint [not null, ref: > book_copies.id]
+  borrowed_at    datetime [not null, default: `CURRENT_TIMESTAMP`]
+  due_at         datetime [not null]
+  returned_at    datetime
+  status         loan_status [not null, default: 'active']
+  created_at     datetime [not null, default: `CURRENT_TIMESTAMP`]
+
+  Indexes {
+    (user_id, status)
+    (copy_id, status)
+    (user_id, borrowed_at)
+  }
+}
+
+Table holds {
+  id                bigint [pk, increment]
+  user_id           bigint [not null, ref: > users.id]
+  book_id           bigint [not null, ref: > books.id]
+  branch_id         bigint [ref: > branches.id]
+  status            varchar(20) [not null, default: 'queued'] // queued|ready|cancelled|fulfilled
+  queued_at         datetime [not null, default: `CURRENT_TIMESTAMP`]
+  ready_by          datetime
+  fulfilled_loan_id bigint [ref: > loans.id]
+  cancelled_at      datetime
+
+  Indexes {
+    (book_id, status)
+    (user_id, status)
+  }
+}
+
+Table ratings {
+  id           bigint [pk, increment]
+  user_id      bigint [not null, ref: > users.id]
+  book_id      bigint [not null, ref: > books.id]
+  rating       smallint [not null] // 1..5
+  review       text
+  created_at   datetime [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at   datetime [not null, default: `CURRENT_TIMESTAMP`]
+
+  Indexes {
+    (user_id, book_id) [unique]
+    (book_id)
+  }
+}
+
+Table favorites {
+  user_id     bigint [not null, ref: > users.id]
+  book_id     bigint [not null, ref: > books.id]
+  created_at  datetime [not null, default: `CURRENT_TIMESTAMP`]
+
+  Indexes {
+    (user_id, book_id) [pk]
+    (book_id)
+  }
+}
+
+Table collections {
+  id           bigint [pk, increment]
+  user_id      bigint [not null, ref: > users.id]
+  name         varchar(255) [not null, default: 'My Collection']
+  is_default   boolean [not null, default: false]
+  is_public    boolean [not null, default: false]
+  created_at   datetime [not null, default: `CURRENT_TIMESTAMP`]
+
+  Indexes {
+    (user_id, is_default)
+  }
+}
+
+Table collection_items {
+  collection_id  bigint [not null, ref: > collections.id]
+  book_id        bigint [not null, ref: > books.id]
+  added_at       datetime [not null, default: `CURRENT_TIMESTAMP`]
+  note           text
+
+  Indexes {
+    (collection_id, book_id) [pk]
+  }
+}
+
+Table recommendations {
+  id            bigint [pk, increment]
+  book_id       bigint [not null, ref: > books.id]
+  from_user_id  bigint [not null, ref: > users.id]
+  to_user_id    bigint [ref: > users.id] // null = public recommendation
+  message       text
+  created_at    datetime [not null, default: `CURRENT_TIMESTAMP`]
+
+  Indexes {
+    (to_user_id)
+    (from_user_id)
+    (book_id)
+  }
+}
+
+Table search_tokens {
+  id         bigint [pk, increment]
+  book_id    bigint [not null, ref: > books.id]
+  token      varchar(100) [not null]
+  weight     decimal(6,2) [not null, default: 1.00]
+  created_at datetime [not null, default: `CURRENT_TIMESTAMP`]
+
+  Indexes {
+    token
+    (token) [type: fulltext] // optional; often better to rely on FULLTEXT across books/authors
+    (book_id)
+  }
+}
+
+Table audit_logs {
+  id           bigint [pk, increment]
+  user_id      bigint [ref: > users.id]
+  action       varchar(100) [not null]
+  entity_type  varchar(50)
+  entity_id    bigint
+  metadata     json
+  created_at   datetime [not null, default: `CURRENT_TIMESTAMP`]
+}
