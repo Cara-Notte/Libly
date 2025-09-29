@@ -29,17 +29,22 @@ async function handleLogin(e) {
         });
         
         if (response.ok) {
-            const result = await response.text();
-            showMessage(result, 'success');
-            
-            localStorage.setItem('currentUser', username);
+            const result = await response.json();
+            // Store the token and user information in localStorage for later API calls
+            if (result.token && result.user) {
+                localStorage.setItem('authToken', result.token);
+                localStorage.setItem('currentUser', result.user.username);
+                localStorage.setItem('currentUserRole', result.user.role);
+                localStorage.setItem('currentUserId', result.user.id);
+            }
+            showMessage(result.message || 'Login successful!', 'success');
             
             setTimeout(() => {
                 window.location.href = 'dashboard.html';
             }, 1500);
         } else {
-            const error = await response.text();
-            showMessage(error, 'error');
+            const error = await response.json().catch(() => null);
+            showMessage((error && (error.error || error.message)) || 'Login failed', 'error');
         }
     } catch (error) {
         showMessage('Network error. Please try again.', 'error');

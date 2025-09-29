@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details - Libly</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Libly</a>
+            <div class="nav-center">
+                <div class="search-container">
+                    <input type="text" id="quickSearch" class="search-input" placeholder="Search..." />
+                    <button id="quickSearchBtn" class="btn btn-secondary">🔍</button>
+                </div>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="about.html" class="nav-item">About</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 id="bookTitle">Loading...</h1>
+        <p id="bookAuthors"></p>
+        <p id="bookGenres"></p>
+        <p id="bookDescription"></p>
+        <p id="bookStats"></p>
+        <div id="ratingSection" class="rating-section" style="display:none;">
+            <p>Your rating:</p>
+            <div id="ratingStars" class="rating-stars"></div>
+        </div>
+        <div id="favoriteSection" style="display:none;">
+            <button id="favoriteBtn" class="btn btn-secondary">❤️ Favorite</button>
+        </div>
+    </div>
+    <script src="navigation.js"></script>
+    <script src="book.js"></script>
+</body>
+</html>

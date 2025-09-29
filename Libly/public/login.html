@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-brand">Libly</a>
@@ -22,12 +21,10 @@
             <div class="nav-menu">
                 <a href="index.html" class="nav-item">Home</a>
                 <a href="about.html" class="nav-item">About</a>
-                <!-- Authentication buttons/profile dropdown will be added by navigation.js -->
             </div>
         </div>
     </nav>
 
-    <!-- Login Form Container -->
     <div class="auth-container">
         <div class="auth-form fade-in">
             <h2>Welcome Back to Libly</h2>
@@ -57,7 +54,6 @@
     <script src="navigation.js"></script>
     <script src="auth.js"></script>
     <script>
-        // Fade-in animation
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.auth-form').style.opacity = '1';
             document.querySelector('.auth-form').style.transform = 'translateY(0)';

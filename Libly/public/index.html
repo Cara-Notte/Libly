@@ -3,11 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libly - Your Personal Library Management System</title>
+    <title>Libly</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
+    <div class="animated-background">
+        <div class="floating-books">
+            <div class="book book1">📚</div>
+            <div class="book book2">📖</div>
+            <div class="book book3">📘</div>
+            <div class="book book4">📙</div>
+            <div class="book book5">📗</div>
+            <div class="book book6">📕</div>
+            <div class="book book7">📚</div>
+            <div class="book book8">📖</div>
+        </div>
+        <div class="gradient-orbs">
+            <div class="orb orb1"></div>
+            <div class="orb orb2"></div>
+            <div class="orb orb3"></div>
+            <div class="orb orb4"></div>
+        </div>
+    </div>
+
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-brand">Libly</a>
@@ -15,67 +33,79 @@
             <div class="nav-center">
                 <div class="search-container">
                     <span class="search-icon">🔍</span>
-                    <input type="text" class="search-input" placeholder="Search books, authors, or members...">
+                    <input type="text" class="search-input" placeholder="Search book by titles, authors, and more...">
                 </div>
             </div>
             
             <div class="nav-menu">
                 <a href="index.html" class="nav-item active">Home</a>
                 <a href="about.html" class="nav-item">About</a>
-                <!-- Authentication buttons/profile dropdown will be added by navigation.js -->
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
     <div class="container">
-        <!-- Hero Section -->
         <section class="hero fade-in">
-            <h1>Welcome to Libly</h1>
-            <p>Your personal library management system that helps you organize, track, and discover books with an elegant and intuitive interface.</p>
-            
-            <div class="hero-buttons">
-                <a href="register.html" class="btn btn-primary">Get Started</a>
-                <a href="about.html" class="btn btn-secondary">Learn More</a>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-word">Welcome</span>
+                    <span class="title-word">to</span>
+                    <span class="title-word highlight-word">Libly</span>
+                </h1>
+                <p class="hero-subtitle typing-animation">Your personalized library management system that lets you discover, organize, and borrow books with an interactive and intuitive interface.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item fade-in">
+                        <div class="stat-number" data-target="0">0</div>
+                        <div class="stat-label">Books Available</div>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number" data-target="0">0</div>
+                        <div class="stat-label">Active Members</div>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="register.html" class="btn btn-primary pulse-animation">
+                        <span>🚀</span>
+                        Get Started
+                    </a>
+                    <a href="about.html" class="btn btn-secondary hover-float">
+                        <span>💡</span>
+                        Learn More
+                    </a>
+                </div>
             </div>
         </section>
 
-        <!-- Feature Cards -->
         <section class="features">
-            <div class="feature-card fade-in">
-                <h3>📚 Organize Your Collection</h3>
-                <p>Keep track of your books, reading progress, and create custom shelves to organize your library exactly how you want it.</p>
-            </div>
-            
-            <div class="feature-card fade-in">
-                <h3>👥 Join the Community</h3>
-                <p>Connect with other book enthusiasts, share recommendations, and discover your next favorite read through our vibrant community.</p>
-            </div>
-            
-            <div class="feature-card fade-in">
-                <h3>📈 Track Your Progress</h3>
-                <p>Monitor your reading habits, set goals, and celebrate your achievements with detailed statistics and progress tracking.</p>
-            </div>
-            
-            <div class="feature-card fade-in">
-                <h3>🔍 Smart Search</h3>
-                <p>Find any book quickly with our powerful search functionality that works across titles, authors, genres, and more.</p>
+            <div class="ferris-wheel-container">
+                <div class="ferris-wheel" id="ferrisWheel">
+                    <div class="feature-card ferris-card" data-angle="0">
+                        <h3>📚 Organize Your Collection</h3>
+                        <p>Keep track of your books, and create custom shelves to organize your own library exactly how you want it.</p>
+                    </div>
+                    
+                    <div class="feature-card ferris-card" data-angle="90">
+                        <h3>👥 Join the Community</h3>
+                        <p>Connect with other book enthusiasts, share recommendations, and discover your next favorite read through our vibrant community.</p>
+                    </div>
+                    
+                    <div class="feature-card ferris-card" data-angle="180">
+                        <h3>🤝 Borrow Available Books Online</h3>
+                        <p>Our system allows you to borrow available books online with just a few clicks, making it easier than ever to enjoy your favorite reads.</p>
+                    </div>
+                    
+                    <div class="feature-card ferris-card" data-angle="270">
+                        <h3>🔍 Smart Search</h3>
+                        <p>Find any book quickly with our powerful search functionality that works across titles, authors, genres, and more.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
 
     <script src="navigation.js"></script>
-    <script>
-        // Add fade-in animation on load
-        document.addEventListener('DOMContentLoaded', function() {
-            const elements = document.querySelectorAll('.fade-in');
-            elements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }, index * 100);
-            });
-        });
-    </script>
+    <script src="index.js"></script>
 </body>
 </html>
