@@ -1,51 +1,73 @@
-/*
- * Database connection helper for Libly
- *
- * This module loads environment variables from a .env file located in the
- * same directory as server.js and establishes a connection pool to a
- * MySQL/MariaDB database using mysql2/promise.  The pool is created
- * lazily to ensure that environment variables are loaded before we read
- * them.  A small connection limit is used by default to avoid
- * exhausting local resources during development; adjust DB_CONN_LIMIT
- * in your .env as needed for production.
+// Libly/db.js
+const path = require("path");
+const mysql = require("mysql2/promise");
+
+// Only load .env locally; Railway injects env vars at runtime
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config({ path: path.join(__dirname, ".env") });
+}
+
+let pool;
+
+/**
+ * Validate required env vars in production. In dev, provide sane defaults.
  */
+function getConfig() {
+  const isProd = process.env.NODE_ENV === "production";
 
-const path = require('path');
-const dotenv = require('dotenv');
-const mysql = require('mysql2/promise');
+  const cfg = {
+    host: process.env.DB_HOST || (isProd ? null : "127.0.0.1"),
+    port: Number(process.env.DB_PORT || (isProd ? NaN : 3306)),
+    user: process.env.DB_USER || (isProd ? null : "libly"),
+    password: process.env.DB_PASSWORD || (isProd ? null : "password123"),
+    database: process.env.DB_NAME || (isProd ? null : "libly_library"),
+    connectionLimit: Number(process.env.DB_CONN_LIMIT || 10),
+    sslRequired: (process.env.DB_SSL || "").toLowerCase() === "true"
+  };
 
-// Load environment variables from .env in this directory.  If the file
-// does not exist or variables are missing, sensible defaults defined
-// below will be used.  You can override by specifying DB_HOST,
-// DB_USER, DB_PASSWORD, DB_NAME, DB_PORT and DB_CONN_LIMIT in your
-// environment or .env file.
-dotenv.config({ path: path.join(__dirname, '.env') });
+  if (isProd) {
+    const missing = [];
+    if (!cfg.host) missing.push("DB_HOST");
+    if (!cfg.port || Number.isNaN(cfg.port)) missing.push("DB_PORT");
+    if (!cfg.user) missing.push("DB_USER");
+    if (!cfg.password) missing.push("DB_PASSWORD");
+    if (!cfg.database) missing.push("DB_NAME");
+    if (missing.length) {
+      throw new Error(
+        `[DB] Missing required env vars in production: ${missing.join(", ")}`
+      );
+    }
+  }
 
-let pool = null;
+  return cfg;
+}
 
 function getPool() {
   if (!pool) {
-    const {
-      DB_HOST = '127.0.0.1',
-      DB_PORT = '3306',
-      DB_USER = 'libly',
-      DB_PASSWORD = 'password123',
-      DB_NAME = 'libly_library',
-      DB_CONN_LIMIT = '10'
-    } = process.env;
+    const cfg = getConfig();
 
-    // Log which credentials are being used (without revealing password)
-    console.log('[DB] connecting', { host: DB_HOST, port: DB_PORT, user: DB_USER, database: DB_NAME });
+    // Optional SSL (usually not needed for Railway internal DB).
+    const ssl = cfg.sslRequired ? { rejectUnauthorized: true } : undefined;
+
+    console.log("[DB] connecting", {
+      host: cfg.host,
+      port: cfg.port,
+      user: cfg.user,
+      database: cfg.database,
+      connectionLimit: cfg.connectionLimit,
+      ssl: !!ssl
+    });
 
     pool = mysql.createPool({
-      host: DB_HOST,
-      port: Number(DB_PORT),
-      user: DB_USER,
-      password: DB_PASSWORD,
-      database: DB_NAME,
+      host: cfg.host,
+      port: cfg.port,
+      user: cfg.user,
+      password: cfg.password,
+      database: cfg.database,
       waitForConnections: true,
-      connectionLimit: Number(DB_CONN_LIMIT),
-      queueLimit: 0
+      connectionLimit: cfg.connectionLimit,
+      queueLimit: 0,
+      ssl
     });
   }
   return pool;
