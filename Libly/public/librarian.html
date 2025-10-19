@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librarian Panel - Libly</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Libly</a>
+            <div class="nav-center">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search books, authors, or members...">
+                </div>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="about.html" class="nav-item">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-header">
+            <h1>Librarian Panel</h1>
+            <div class="user-welcome">
+                <span id="librarianUsername">Loading...</span>
+            </div>
+        </div>
+        <div class="section-card">
+            <h2>📚 Books Management</h2>
+            <form id="bookForm" class="book-form">
+                <input type="hidden" id="bookId" />
+                <div class="form-row">
+                    <label for="bookTitle">Title</label>
+                    <input type="text" id="bookTitle" required />
+                </div>
+                <div class="form-row">
+                    <label for="bookSubtitle">Subtitle</label>
+                    <input type="text" id="bookSubtitle" />
+                </div>
+                <div class="form-row">
+                    <label for="bookDescription">Description</label>
+                    <textarea id="bookDescription" rows="3"></textarea>
+                </div>
+                <div class="form-row">
+                    <label for="bookISBN10">ISBN-10</label>
+                    <input type="text" id="bookISBN10" />
+                    <label for="bookISBN13">ISBN-13</label>
+                    <input type="text" id="bookISBN13" />
+                </div>
+                <div class="form-row">
+                    <label for="bookLanguage">Language</label>
+                    <input type="text" id="bookLanguage" />
+                    <label for="bookPages">Page Count</label>
+                    <input type="number" id="bookPages" />
+                </div>
+                <div class="form-row">
+                    <label for="bookReleaseDate">Release Date</label>
+                    <input type="date" id="bookReleaseDate" />
+                    <label for="bookPublisherId">Publisher ID</label>
+                    <input type="number" id="bookPublisherId" />
+                </div>
+                <div class="form-row">
+                    <label for="bookCoverUrl">Cover URL</label>
+                    <input type="text" id="bookCoverUrl" />
+                </div>
+                <div class="form-row">
+                    <label for="bookAuthorIds">Author IDs (comma-separated)</label>
+                    <input type="text" id="bookAuthorIds" />
+                </div>
+                <div class="form-row">
+                    <label for="bookGenreIds">Genre IDs (comma-separated)</label>
+                    <input type="text" id="bookGenreIds" />
+                </div>
+                <div class="form-row">
+                    <button type="submit" id="saveBookBtn" class="btn btn-primary">Add Book</button>
+                    <button type="button" id="cancelEditBtn" class="btn btn-secondary" style="display:none;">Cancel</button>
+                </div>
+            </form>
+            <h3>Existing Books</h3>
+            <div id="booksList" class="users-list">
+                <p>Loading books...</p>
+            </div>
+        </div>
+        <div class="section-card">
+            <h2>⭐ Reviews Management</h2>
+            <div class="reviews-controls">
+                <div class="sort-controls">
+                    <label for="reviewSortBy">Sort by:</label>
+                    <select id="reviewSortBy" class="sort-select">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="highest_rating">Highest Rating</option>
+                        <option value="lowest_rating">Lowest Rating</option>
+                    </select>
+                </div>
+                <div class="reviews-stats">
+                    <span id="librarianReviewsCount">Loading reviews...</span>
+                </div>
+            </div>
+            <div id="librarianReviewsList" class="admin-reviews-list">
+                <p>Loading reviews...</p>
+            </div>
+        </div>
+    </div>
+    <script src="navigation.js"></script>
+    <script src="librarian.js"></script>
+</body>
+</html>

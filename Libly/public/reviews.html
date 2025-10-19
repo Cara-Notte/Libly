@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - Libly</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Libly</a>
+            
+            <div class="nav-center">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search books, authors, or members...">
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="about.html" class="nav-item">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="reviews-header">
+            <h1>⭐ Community Reviews</h1>
+            <p class="reviews-description">Read what our community thinks about their favorite books</p>
+        </div>
+
+        <div class="reviews-content">
+            <div class="section-card">
+                <div class="reviews-controls">
+                    <div class="sort-controls">
+                        <label for="sortBy">Sort by:</label>
+                        <select id="sortBy" class="sort-select">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="highest_rating">Highest Rating</option>
+                            <option value="lowest_rating">Lowest Rating</option>
+                        </select>
+                    </div>
+                    
+                    <div class="reviews-stats">
+                        <span id="reviewsCount">Loading reviews...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <div class="reviews-header-info">
+                    <h2>Recent Reviews</h2>
+                    <p>Discover what others are saying about books</p>
+                </div>
+                
+                <div id="reviewsContainer" class="reviews-list">
+                    <div class="loading-placeholder">
+                        <p>Loading reviews...</p>
+                    </div>
+                </div>
+
+                <div id="pagination" class="pagination" style="display: none;">
+                    <button id="prevPage" class="btn btn-secondary">Previous</button>
+                    <span id="pageInfo">Page 1 of 1</span>
+                    <button id="nextPage" class="btn btn-secondary">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h2 class="footer-brand">Libly</h2>
+                <p class="footer-desc">
+                    Your digital library companion — discover, rate, and review your favorite books with ease.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="search.html">Search</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p>📧 libly.support@gmail.com</p>
+                <p>📍 Jakarta, Indonesia</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Libly. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script src="reviews.js"></script>
+</body>
+</html>

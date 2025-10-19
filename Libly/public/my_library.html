@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Library - Libly</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Libly</a>
+            
+            <div class="nav-center">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search books, authors, or members...">
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="about.html" class="nav-item">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-header">
+            <h1>My Library</h1>
+            <div class="user-welcome">
+                <span id="currentUsername">Loading...</span>
+            </div>
+        </div>
+
+        <div class="library-tabs">
+            <button class="tab-btn active" data-tab="favorites">
+                <span>❤️</span> Favorite Books
+            </button>
+            <button class="tab-btn" data-tab="collections">
+                <span>📚</span> Collections
+            </button>
+        </div>
+
+        <div class="tab-content">
+            <div id="favorites-tab" class="tab-panel active">
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2>❤️ Favorite Books</h2>
+                        <p class="section-description">Books you've marked as favorites</p>
+                    </div>
+                    
+                    <div id="favoritesList" class="book-grid">
+                        <div class="loading-placeholder">
+                            <p>Loading your favorite books...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="collections-tab" class="tab-panel">
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2>📚 Collections</h2>
+                        <p class="section-description">Organize your books into custom collections</p>
+                        <button id="createCollectionBtn" class="btn btn-primary">
+                            <span>➕</span> Create Collection
+                        </button>
+                    </div>
+                    
+                    <div id="collectionsList" class="collections-grid">
+                        <div class="loading-placeholder">
+                            <p>Loading your collections...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="createCollectionModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Create New Collection</h3>
+            <form id="createCollectionForm">
+                <div class="form-group">
+                    <label for="collectionName">Collection Name</label>
+                    <input type="text" id="collectionName" name="name" required maxlength="255" placeholder="e.g., My Reading List">
+                </div>
+                
+                <div class="form-group">
+                    <label for="collectionDescription">Description (Optional)</label>
+                    <textarea id="collectionDescription" name="description" rows="3" placeholder="Describe your collection..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="collectionPublic" name="is_public">
+                        <span class="checkmark"></span>
+                        Make this collection public
+                    </label>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="submit" class="btn btn-primary">Create Collection</button>
+                    <button type="button" id="cancelCreateCollection" class="btn btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="collectionDetailsModal" class="modal" style="display: none;">
+        <div class="modal-content large-modal">
+            <div class="modal-header">
+                <h3 id="collectionDetailsTitle">Collection Details</h3>
+                <div class="modal-actions">
+                    <button id="editCollectionBtn" class="btn btn-secondary">Edit</button>
+                    <button id="deleteCollectionBtn" class="btn btn-danger">Delete</button>
+                    <button id="closeCollectionDetails" class="btn btn-ghost">✕</button>
+                </div>
+            </div>
+            
+            <div id="collectionBooksList" class="book-grid">
+            </div>
+        </div>
+    </div>
+
+    <div id="addToCollectionModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Add to Collection</h3>
+            <p id="addToCollectionBookTitle">Book Title</p>
+            
+            <div class="form-group">
+                <label for="selectCollection">Choose Collection</label>
+                <select id="selectCollection" name="collection_id" required>
+                    <option value="">Select a collection...</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="collectionNote">Note (Optional)</label>
+                <textarea id="collectionNote" name="note" rows="2" placeholder="Add a note about this book..."></textarea>
+            </div>
+            
+            <div class="modal-actions">
+                <button id="confirmAddToCollection" class="btn btn-primary">Add to Collection</button>
+                <button id="cancelAddToCollection" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="message" class="message" style="display: none;"></div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h2 class="footer-brand">Libly</h2>
+                <p class="footer-desc">
+                    Your digital library companion — discover, rate, and review your favorite books with ease.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="search.html">Search</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p>📧 libly.support@gmail.com</p>
+                <p>📍 Jakarta, Indonesia</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Libly. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script src="my_library.js"></script>
+</body>
+</html>

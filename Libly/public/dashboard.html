@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Libly</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Libly</a>
+            
+            <div class="nav-center">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search books, authors, or members...">
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="about.html" class="nav-item">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-header">
+            <h1>Welcome Back!</h1>
+            <div class="user-welcome">
+                <span id="username">Loading...</span>
+            </div>
+        </div>
+
+        <div class="dashboard-content">
+            <div class="section-card">
+                <h2>📊 Quick Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 id="totalUsers">0</h3>
+                        <p>Total Users</p>
+                    </div>
+                    <div class="stat-card">
+                        <a href="books.html" style="text-decoration: none; color: inherit;">
+                            <h3>📚</h3>
+                            <p>Books</p>
+                        </a>
+                    </div>
+                    <div class="stat-card">
+                        <a href="reviews.html" style="text-decoration: none; color: inherit;">
+                            <h3>⭐</h3>
+                            <p>Reviews</p>
+                        </a>
+                    </div>
+                    <div class="stat-card">
+                        <a href="loans.html" style="text-decoration: none; color: inherit;">
+                            <h3>📖</h3>
+                            <p>Loans</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <h2>📖 Featured Books</h2>
+                <div class="recommendations-grid">
+                    <div class="recommendation-section">
+                        <h3 class="recommendation-title">🎲 Today's Pick</h3>
+                        <div id="todayPick" class="books-grid">
+                            <div class="book-card-skeleton"></div>
+                        </div>
+                    </div>
+
+                    <div class="recommendation-section">
+                        <h3 class="recommendation-title">⭐ Top Rated</h3>
+                        <div id="topRated" class="books-grid">
+                            <div class="book-card-skeleton"></div>
+                        </div>
+                    </div>
+
+                    <div class="recommendation-section">
+                        <h3 class="recommendation-title">❤️ Most Favorited</h3>
+                        <div id="mostFavorited" class="books-grid">
+                            <div class="book-card-skeleton"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <h2>👥 Community Members</h2>
+                <button id="refreshUsers" class="btn btn-primary" style="margin-bottom: 1rem;">Refresh Users</button>
+                <div id="usersList" class="users-list">
+                    <p>Loading users...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h2 class="footer-brand">Libly</h2>
+                <p class="footer-desc">
+                    Your digital library companion — discover, rate, and review your favorite books with ease.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="search.html">Search</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p>📧 libly.support@gmail.com</p>
+                <p>📍 Jakarta, Indonesia</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Libly. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script src="navigation.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
