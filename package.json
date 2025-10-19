@@ -5,7 +5,7 @@
   "type": "module",
   "engines": { "node": ">=18" },
   "scripts": {
-    "start": "node server.js"
+    "start": "node Libly/server.js"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
