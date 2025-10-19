@@ -1646,8 +1646,5 @@ app.get('/', (req, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Libly server running on http://localhost:${PORT}`);
-  console.log(`Visit http://localhost:${PORT} to access the application`);
-});
+const port = process.env.PORT || 3000;
+app.listen(port, "0.0.0.0", () => console.log(`Listening on ${port}`));
