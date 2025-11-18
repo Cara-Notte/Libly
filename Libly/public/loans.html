@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loans - Libly</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="notificationContainer" class="notification-container"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Libly</a>
+            
+            <div class="nav-center">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search books, authors, or members...">
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="about.html" class="nav-item">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="loans-header">
+            <h1>📖 Book Loans</h1>
+            <p class="loans-description">Manage your book loans and returns</p>
+        </div>
+
+        <div class="loans-content">
+            <div class="section-card">
+                <div class="loans-actions">
+                    <button id="borrowBookBtn" class="btn btn-primary">
+                        <span>📚</span> Borrow a Book
+                    </button>
+                    <button id="returnBookBtn" class="btn btn-secondary">
+                        <span>↩️</span> Return a Book
+                    </button>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <div class="loans-header-info">
+                    <h2>My Active Loans</h2>
+                    <p id="loansCount">Loading loans...</p>
+                </div>
+
+                <div id="dueSoonReminder" class="due-soon-reminder" style="display: none;">
+                    <div class="reminder-icon">⏰</div>
+                    <div class="reminder-content">
+                        <strong>Reminder</strong>
+                        <p id="dueSoonMessage"></p>
+                    </div>
+                </div>
+                
+                <div id="loansContainer" class="loans-list">
+                    <div class="loading-placeholder">
+                        <p>Loading your loans...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <div class="loans-header-info">
+                    <h2>Loan History</h2>
+                    <p>Your past loans and returns</p>
+                </div>
+                
+                <div id="loanHistoryContainer" class="loans-list">
+                    <div class="loading-placeholder">
+                        <p>Loading loan history...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="borrowBookModal" class="modal" style="display: none;">
+        <div class="modal-content borrow-modal">
+            <div class="modal-header">
+                <h3>📚 Borrow a Book</h3>
+                <button type="button" id="closeBorrowModal" class="close-btn">&times;</button>
+            </div>
+            
+            <form id="borrowBookForm">
+                <div class="form-section">
+                    <h4>Step 1: Select a Book</h4>
+                    <div class="book-selection">
+                        <div class="search-section">
+                            <input type="text" id="bookSearchInput" placeholder="Search books by title or author..." autocomplete="off">
+                            <button type="button" id="searchBooksBtn" class="btn btn-primary">Search</button>
+                        </div>
+                        
+                        <div id="bookListContainer" class="book-list-container">
+                            <div class="loading-message">Click "Search" to find available books</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section" id="selectedBookSection" style="display: none;">
+                    <h4>Step 2: Selected Book</h4>
+                    <div id="selectedBookCard" class="selected-book-card">
+                    </div>
+                </div>
+                
+                <div class="form-section" id="loanSettingsSection" style="display: none;">
+                    <h4>Step 3: Loan Settings</h4>
+                    <div class="loan-settings">
+                        <div class="form-group">
+                            <label for="loanDuration">Loan Duration:</label>
+                            <select id="loanDuration" required>
+                                <option value="7">7 days</option>
+                                <option value="14" selected>14 days</option>
+                                <option value="21">21 days</option>
+                                <option value="30">30 days</option>
+                            </select>
+                        </div>
+                        <div class="loan-info">
+                            <p><strong>Due Date:</strong> <span id="dueDatePreview">-</span></p>
+                            <p><strong>Available Copies:</strong> <span id="availableCopies">-</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" id="cancelBorrowBtn" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" id="confirmBorrowBtn" class="btn btn-primary" style="display: none;">Confirm Borrow</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="returnBookModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Return a Book</h3>
+            <form id="returnBookForm">
+                <div class="form-group">
+                    <label for="returnLoanSelect">Select loan to return:</label>
+                    <select id="returnLoanSelect" required>
+                        <option value="">Select a loan...</option>
+                    </select>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="submit" id="confirmReturnBtn" class="btn btn-primary">Return Book</button>
+                    <button type="button" id="cancelReturnBtn" class="btn btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="extendLoanModal" class="modal" style="display: none;">
+        <div class="modal-content extend-modal">
+            <div class="modal-header">
+                <h3>📅 Extend Due Date</h3>
+                <button type="button" id="closeExtendModal" class="close-btn">&times;</button>
+            </div>
+            
+            <div id="extendBookInfo" class="extend-book-info">
+            </div>
+            
+            <form id="extendLoanForm">
+                <div class="form-section">
+                    <label for="extensionDays" class="form-label">How many days would you like to extend?</label>
+                    <div class="extension-options">
+                        <div class="extension-option" data-days="1">
+                            <input type="radio" id="extend1" name="extensionDays" value="1">
+                            <label for="extend1">
+                                <span class="days">1 Day</span>
+                                <span class="icon">📅</span>
+                            </label>
+                        </div>
+                        <div class="extension-option" data-days="3">
+                            <input type="radio" id="extend3" name="extensionDays" value="3">
+                            <label for="extend3">
+                                <span class="days">3 Days</span>
+                                <span class="icon">📅</span>
+                            </label>
+                        </div>
+                        <div class="extension-option" data-days="5">
+                            <input type="radio" id="extend5" name="extensionDays" value="5">
+                            <label for="extend5">
+                                <span class="days">5 Days</span>
+                                <span class="icon">📅</span>
+                            </label>
+                        </div>
+                        <div class="extension-option" data-days="7">
+                            <input type="radio" id="extend7" name="extensionDays" value="7" checked>
+                            <label for="extend7">
+                                <span class="days">7 Days</span>
+                                <span class="icon">📅</span>
+                                <span class="recommended">Recommended</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="extension-preview">
+                    <div class="preview-row">
+                        <span class="preview-label">Current Due Date:</span>
+                        <span id="currentDueDate" class="preview-value">-</span>
+                    </div>
+                    <div class="preview-arrow">To</div>
+                    <div class="preview-row highlight">
+                        <span class="preview-label">New Due Date:</span>
+                        <span id="newDueDate" class="preview-value">-</span>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" id="cancelExtendBtn" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" id="confirmExtendBtn" class="btn btn-extend">Confirm Extension</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="confirmReturnModal" class="modal" style="display: none;">
+        <div class="modal-content confirm-modal">
+            <div class="modal-header">
+                <h3>↩️ Confirm Return</h3>
+                <button type="button" id="closeConfirmReturnModal" class="close-btn">&times;</button>
+            </div>
+            
+            <div class="confirm-message">
+                <p class="confirm-text">Are you sure you want to return this book?</p>
+            </div>
+            
+            <div class="modal-actions centered">
+                <button type="button" id="cancelConfirmReturnBtn" class="btn btn-secondary">Cancel</button>
+                <button type="button" id="confirmReturnBookBtn" class="btn btn-primary">Yes</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h2 class="footer-brand">Libly</h2>
+                <p class="footer-desc">
+                    Your digital library companion — discover, rate, and review your favorite books with ease.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="search.html">Search</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p>📧 libly.support@gmail.com</p>
+                <p>📍 Jakarta, Indonesia</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Libly. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script src="loans.js"></script>
+</body>
+</html>

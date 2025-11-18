@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Libly</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Libly</a>
+            <div class="nav-center">
+                <div class="search-container">
+                    <select id="searchAttribute" class="search-attribute">
+                        <option value="">All</option>
+                        <option value="title">Title</option>
+                        <option value="author">Author</option>
+                        <option value="genre">Genre</option>
+                    </select>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search books...">
+                    <button id="searchBtn" class="btn btn-secondary">🔍</button>
+                </div>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="about.html" class="nav-item">About</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Search Results</h1>
+        <div id="resultsContainer" class="results-container">
+            <p>Enter a search query above.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h2 class="footer-brand">Libly</h2>
+                <p class="footer-desc">
+                    Your digital library companion — discover, rate, and review your favorite books with ease.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="search.html">Search</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p>📧 libly.support@gmail.com</p>
+                <p>📍 Jakarta, Indonesia</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Libly. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="navigation.js"></script>
+    <script src="search.js"></script>
+</body>
+</html>

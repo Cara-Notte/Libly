@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books - Libly</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Libly</a>
+            
+            <div class="nav-center">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search books, authors, or members...">
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="about.html" class="nav-item">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="books-header">
+            <h1>📚 All Books</h1>
+            <p class="books-description">Discover and explore our complete collection of books</p>
+        </div>
+
+        <div class="books-content">
+            <div class="section-card">
+                <div class="books-controls">
+                    <div class="sort-controls">
+                        <label for="sortBy">Sort by:</label>
+                        <select id="sortBy" class="sort-select">
+                            <option value="title_asc">Title (A-Z)</option>
+                            <option value="title_desc">Title (Z-A)</option>
+                            <option value="release_date_asc">Release Date (Oldest First)</option>
+                            <option value="release_date_desc">Release Date (Newest First)</option>
+                            <option value="popularity_asc">Popularity (Least Popular)</option>
+                            <option value="popularity_desc">Popularity (Most Popular)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="view-controls">
+                        <button id="gridViewBtn" class="view-btn active" title="Grid View">⊞</button>
+                        <button id="listViewBtn" class="view-btn" title="List View">☰</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <div class="books-header-info">
+                    <h2>Book Collection</h2>
+                    <p id="booksCount">Loading books...</p>
+                </div>
+                
+                <div id="booksContainer" class="books-grid">
+                    <div class="loading-placeholder">
+                        <p>Loading books...</p>
+                    </div>
+                </div>
+
+                <div id="pagination" class="pagination" style="display: none;">
+                    <button id="prevPage" class="btn btn-secondary">Previous</button>
+                    <span id="pageInfo">Page 1 of 1</span>
+                    <button id="nextPage" class="btn btn-secondary">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h2 class="footer-brand">Libly</h2>
+                <p class="footer-desc">
+                    Your digital library companion — discover, rate, and review your favorite books with ease.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="search.html">Search</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p>📧 libly.support@gmail.com</p>
+                <p>📍 Jakarta, Indonesia</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Libly. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script src="books.js"></script>
+</body>
+</html>

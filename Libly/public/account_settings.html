@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings - Libly</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Libly</a>
+            
+            <div class="nav-center">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search books, authors, or members...">
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="about.html" class="nav-item">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-header">
+            <h1>Account Settings</h1>
+            <div class="user-welcome">
+                <span id="currentUsername">Loading...</span>
+            </div>
+        </div>
+
+        <div class="settings-content">
+            <div class="section-card">
+                <h2>👤 Profile Information</h2>
+                <form id="profileForm" class="settings-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required minlength="3" maxlength="50">
+                        <small>Your unique username (3-50 characters)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" maxlength="255">
+                        <small>Optional email address</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Account Created</label>
+                        <div class="readonly-field" id="createdAt">Loading...</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Role</label>
+                        <div class="readonly-field" id="userRole">Loading...</div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Update Profile</button>
+                </form>
+            </div>
+
+            <div class="section-card">
+                <h2>🔒 Change Password</h2>
+                <form id="passwordForm" class="settings-form">
+                    <div class="form-group">
+                        <label for="currentPassword">Current Password</label>
+                        <input type="password" id="currentPassword" name="currentPassword" required>
+                        <small>Enter your current password</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <input type="password" id="newPassword" name="newPassword" required minlength="6">
+                        <small>At least 6 characters</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmNewPassword">Confirm New Password</label>
+                        <input type="password" id="confirmNewPassword" name="confirmNewPassword" required minlength="6">
+                        <small>Must match your new password</small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Change Password</button>
+                </form>
+            </div>
+
+            <div class="section-card danger-zone">
+                <h2>⚠️ Danger Zone</h2>
+                <p class="danger-warning">
+                    Once you delete your account, there is no going back. Please be certain.
+                </p>
+                
+                <form id="deleteAccountForm" class="settings-form">
+                    <div class="form-group">
+                        <label for="deletePassword">Confirm Password</label>
+                        <input type="password" id="deletePassword" name="deletePassword" required>
+                        <small>Enter your password to confirm account deletion</small>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-danger" id="deleteAccountBtn">
+                        🗑️ Delete My Account
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="message" class="message" style="display: none;"></div>
+
+    <div id="confirmModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Confirm Account Deletion</h3>
+            <p>Are you absolutely sure you want to delete your account? This action cannot be undone.</p>
+            <p><strong>This will permanently delete:</strong></p>
+            <ul>
+                <li>Your profile and personal information</li>
+                <li>All your book ratings and reviews</li>
+                <li>Your favorites and collections</li>
+                <li>Your reading history</li>
+            </ul>
+            <div class="modal-actions">
+                <button id="confirmDeleteBtn" class="btn btn-danger">Yes, Delete My Account</button>
+                <button id="cancelDeleteBtn" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h2 class="footer-brand">Libly</h2>
+                <p class="footer-desc">
+                    Your digital library companion — discover, rate, and review your favorite books with ease.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="search.html">Search</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p>📧 libly.support@gmail.com</p>
+                <p>📍 Jakarta, Indonesia</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Libly. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script src="account_settings.js"></script>
+</body>
+</html>

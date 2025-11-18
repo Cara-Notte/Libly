@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account Settings</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="section-card fade-in">
+      <h2>Account Settings</h2>
+
+      <form id="settingsForm" style="margin-top:1.5rem;">
+        
+        <div class="form-group">
+          <label for="username">Edit Username</label>
+          <input type="text" id="username" placeholder="Enter new username" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+      </form>
+
+      <div class="section-card" style="margin-top:2rem;">
+        <h2>Your Books</h2>
+        <div class="users-list" id="bookList">
+        </div>
+      </div>
+
+      <div id="message" class="message success" style="display:none;">
+        ✅ Settings updated successfully!
+      </div>
+
+      <button id="goBackBtn" class="btn btn-secondary" type="button" style="margin-top:1.5rem;">
+        ← Go Back
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const usernameInput = document.getElementById("username");
+    const msgBox = document.getElementById("message");
+
+    document.getElementById("goBackBtn").addEventListener("click", function() {
+      window.location.href = "index.html";
+    });
+
+    const books = [
+      { title: "JavaScript Basics", status: "Reading" },
+      { title: "CSS Design", status: "Completed" },
+      { title: "React in Action", status: "Wishlist" }
+    ];
+
+    const bookList = document.getElementById("bookList");
+    function loadBooks() {
+      bookList.innerHTML = "";
+      books.forEach(book => {
+        const div = document.createElement("div");
+        div.className = "user-item";
+        div.innerHTML = `<strong>${book.title}</strong><small>Status: ${book.status}</small>`;
+        bookList.appendChild(div);
+      });
+    }
+    loadBooks();
+
+    async function loadUsers() {
+      try {
+        const res = await fetch("http://localhost:3000/users");
+        const users = await res.json();
+
+        userSelect.innerHTML = "<option value=''>-- Pilih User --</option>";
+        users.forEach(u => {
+          const opt = document.createElement("option");
+          opt.value = u.id;
+          opt.textContent = `${u.id} - ${u.username}`;
+          userSelect.appendChild(opt);
+        });
+      } catch (err) {
+        console.error("❌ Error load users:", err);
+      }
+    }
+    loadUsers();
+
+    userSelect.addEventListener("change", async function() {
+      const userId = this.value;
+      if (!userId) {
+        usernameInput.value = "";
+        return;
+      }
+
+      try {
+        const res = await fetch("http://localhost:3000/users");
+        const users = await res.json();
+        const selectedUser = users.find(u => u.id == userId);
+        if (selectedUser) {
+          usernameInput.value = selectedUser.username;
+        }
+      } catch (err) {
+        console.error("❌ Error load user:", err);
+      }
+    });
+
+    document.getElementById("settingsForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const userId = userSelect.value;
+      const username = usernameInput.value;
+
+      if (!userId || !username) {
+        alert("⚠️ Pilih user dan isi username baru!");
+        return;
+      }
+
+      try {
+        const res = await fetch("http://localhost:3000/update-username", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: userId, username })
+        });
+
+        const text = await res.text();
+        msgBox.textContent = text;
+        msgBox.style.display = "block";
+        setTimeout(() => msgBox.style.display = "none", 3000);
+
+        loadUsers();
+      } catch (err) {
+        console.error("❌ Error update username:", err);
+      }
+    });
+  </script>
+</body>
+</html>

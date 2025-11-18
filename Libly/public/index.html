@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libly</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="animated-background">
+        <div class="floating-books">
+            <div class="book book1">📚</div>
+            <div class="book book2">📖</div>
+            <div class="book book3">📘</div>
+            <div class="book book4">📙</div>
+            <div class="book book5">📗</div>
+            <div class="book book6">📕</div>
+            <div class="book book7">📚</div>
+            <div class="book book8">📖</div>
+        </div>
+        <div class="gradient-orbs">
+            <div class="orb orb1"></div>
+            <div class="orb orb2"></div>
+            <div class="orb orb3"></div>
+            <div class="orb orb4"></div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Libly</a>
+            
+            <div class="nav-center">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search book by titles, authors, and more...">
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item active">Home</a>
+                <a href="about.html" class="nav-item">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="hero fade-in">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-word">Welcome</span>
+                    <span class="title-word">to</span>
+                    <span class="title-word highlight-word">Libly</span>
+                </h1>
+                <p class="hero-subtitle typing-animation">Your personalized library management system that lets you discover, organize, and borrow books with an interactive and intuitive interface.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item fade-in">
+                        <div class="stat-number" data-target="0">0</div>
+                        <div class="stat-label">Books Available</div>
+                    </div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number" data-target="0">0</div>
+                        <div class="stat-label">Active Members</div>
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="register.html" class="btn btn-primary pulse-animation">
+                        <span>🚀</span>
+                        Get Started
+                    </a>
+                    <a href="about.html" class="btn btn-secondary hover-float">
+                        <span>💡</span>
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="book-recommendations">
+            <h2 class="section-title">📖 Featured Books</h2>
+            
+            <div class="recommendations-grid">
+                <div class="recommendation-section">
+                    <h3 class="recommendation-title">🎲 Today's Pick</h3>
+                    <div id="todayPick" class="books-grid">
+                        <div class="book-card-skeleton"></div>
+                    </div>
+                </div>
+
+                <div class="recommendation-section">
+                    <h3 class="recommendation-title">⭐ Top Rated</h3>
+                    <div id="topRated" class="books-grid">
+                        <div class="book-card-skeleton"></div>
+                    </div>
+                </div>
+
+                <div class="recommendation-section">
+                    <h3 class="recommendation-title">❤️ Most Favorited</h3>
+                    <div id="mostFavorited" class="books-grid">
+                        <div class="book-card-skeleton"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="ferris-wheel-container">
+                <div class="ferris-wheel" id="ferrisWheel">
+                    <div class="feature-card ferris-card" data-angle="0">
+                        <h3>📚 Organize Your Collection</h3>
+                        <p>Keep track of your books, and create custom shelves to organize your own library exactly how you want it.</p>
+                    </div>
+                    
+                    <div class="feature-card ferris-card" data-angle="90">
+                        <h3>👥 Join the Community</h3>
+                        <p>Connect with other book enthusiasts, share recommendations, and discover your next favorite read through our vibrant community.</p>
+                    </div>
+                    
+                    <div class="feature-card ferris-card" data-angle="180">
+                        <h3>🤝 Borrow Available Books Online</h3>
+                        <p>Our system allows you to borrow available books online with just a few clicks, making it easier than ever to enjoy your favorite reads.</p>
+                    </div>
+                    
+                    <div class="feature-card ferris-card" data-angle="270">
+                        <h3>🔍 Smart Search</h3>
+                        <p>Find any book quickly with our powerful search functionality that works across titles, authors, genres, and more.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h2 class="footer-brand">Libly</h2>
+                <p class="footer-desc">
+                    Your digital library companion — discover, rate, and review your favorite books with ease.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="search.html">Search</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p>📧 libly.support@gmail.com</p>
+                <p>📍 Jakarta, Indonesia</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Libly. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

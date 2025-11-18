@@ -1,0 +1,61 @@
+[
+  { "id": 1, "book_id": 1, "name": "Editor's Pick" },
+  { "id": 2, "book_id": 1, "name": "Newest Arrival" },
+
+  { "id": 3, "book_id": 2, "name": "Editor's Pick" },
+  { "id": 4, "book_id": 2, "name": "Newest Arrival" },
+
+  { "id": 5, "book_id": 3, "name": "Editor's Pick" },
+  { "id": 6, "book_id": 3, "name": "Newest Arrival" },
+
+  { "id": 7, "book_id": 4, "name": "Editor's Pick" },
+  { "id": 8, "book_id": 4, "name": "Newest Arrival" },
+
+  { "id": 9, "book_id": 5, "name": "Editor's Pick" },
+  { "id": 10, "book_id": 5, "name": "Newest Arrival" },
+
+  { "id": 11, "book_id": 6, "name": "Editor's Pick" },
+  { "id": 12, "book_id": 6, "name": "Newest Arrival" },
+
+  { "id": 13, "book_id": 7, "name": "Editor's Pick" },
+  { "id": 14, "book_id": 7, "name": "Newest Arrival" },
+
+  { "id": 15, "book_id": 8, "name": "Editor's Pick" },
+  { "id": 16, "book_id": 8, "name": "Newest Arrival" },
+
+  { "id": 17, "book_id": 9, "name": "Editor's Pick" },
+  { "id": 18, "book_id": 9, "name": "Newest Arrival" },
+
+  { "id": 19, "book_id": 10, "name": "Editor's Pick" },
+  { "id": 20, "book_id": 10, "name": "Newest Arrival" },
+
+  { "id": 21, "book_id": 11, "name": "Editor's Pick" },
+  { "id": 22, "book_id": 11, "name": "Newest Arrival" },
+
+  { "id": 23, "book_id": 12, "name": "Editor's Pick" },
+  { "id": 24, "book_id": 12, "name": "Newest Arrival" },
+
+  { "id": 25, "book_id": 13, "name": "Editor's Pick" },
+  { "id": 26, "book_id": 13, "name": "Newest Arrival" },
+
+  { "id": 27, "book_id": 14, "name": "Editor's Pick" },
+  { "id": 28, "book_id": 14, "name": "Newest Arrival" },
+
+  { "id": 29, "book_id": 15, "name": "Editor's Pick" },
+  { "id": 30, "book_id": 15, "name": "Newest Arrival" },
+
+  { "id": 31, "book_id": 16, "name": "Editor's Pick" },
+  { "id": 32, "book_id": 16, "name": "Newest Arrival" },
+
+  { "id": 33, "book_id": 17, "name": "Editor's Pick" },
+  { "id": 34, "book_id": 17, "name": "Newest Arrival" },
+
+  { "id": 35, "book_id": 18, "name": "Editor's Pick" },
+  { "id": 36, "book_id": 18, "name": "Newest Arrival" },
+
+  { "id": 37, "book_id": 19, "name": "Editor's Pick" },
+  { "id": 38, "book_id": 19, "name": "Newest Arrival" },
+
+  { "id": 39, "book_id": 20, "name": "Editor's Pick" },
+  { "id": 40, "book_id": 20, "name": "Newest Arrival" }
+]

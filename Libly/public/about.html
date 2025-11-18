@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Libly</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Libly</a>
+            
+            <div class="nav-center">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search books, authors, or members...">
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="about.html" class="nav-item active">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="about-hero">
+            <h1>About Libly</h1>
+            <p>Discover the story behind your personal library management system and learn how Libly can transform your reading experience.</p>
+        </section>
+
+        <div class="about-sections">
+            <section class="about-section">
+                <h2>🎯 Our Mission</h2>
+                <p>Libly is designed to revolutionize how you manage your personal library. We believe that every book lover deserves a sophisticated yet simple way to organize their collection, track their reading journey, and connect with fellow bibliophiles. Our mission is to create the most intuitive and beautiful library management experience possible.</p>
+            </section>
+
+            <section class="about-section">
+                <h2>✨ Key Features</h2>
+                <p>Libly offers a comprehensive suite of features designed for the modern reader. From intelligent book organization and progress tracking to community features and personalized recommendations, we provide everything you need to enhance your reading experience. Our clean, minimalist interface ensures that managing your library is both efficient and enjoyable.</p>
+            </section>
+
+            <section class="about-section">
+                <h2>🔧 Technology</h2>
+                <p>Built with modern web technologies including Node.js and Express, Libly delivers a fast, secure, and reliable experience. Our application uses industry-standard security practices to protect your data while providing seamless synchronization across all your devices. The responsive design ensures Libly works perfectly on desktop, tablet, and mobile devices.</p>
+            </section>
+
+            <section class="about-section">
+                <h2>👥 Community</h2>
+                <p>Join our growing community of book enthusiasts who share your passion for reading. Connect with other users, share book recommendations, participate in reading challenges, and discover new authors and genres. Our community features are designed to enhance your reading journey through meaningful connections with fellow readers.</p>
+            </section>
+
+            <section class="about-section">
+                <h2>🚀 Getting Started</h2>
+                <p>Ready to transform your reading experience? Getting started with Libly is quick and easy. Simply create your account, start adding your favorite books, and begin exploring all the features we have to offer. Whether you're managing a small personal collection or an extensive library, Libly adapts to your needs.</p>
+                
+                <div style="margin-top: 1.5rem;">
+                    <a href="register.html" class="btn btn-primary">Create Account</a>
+                    <a href="index.html" class="btn btn-secondary">Back to Home</a>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <h2>📧 Contact & Support</h2>
+                <p>Have questions or need assistance? Our support team is here to help. We're committed to providing excellent customer service and continuously improving Libly based on user feedback. Your reading journey is important to us, and we're here to ensure you get the most out of your Libly experience.</p>
+            </section>
+        </div>
+    </div>
+
+    <script src="navigation.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.about-section');
+            sections.forEach((section, index) => {
+                section.style.animationDelay = `${index * 100}ms`;
+                section.classList.add('fade-in');
+            });
+        });
+    </script>
+</body>
+</html>

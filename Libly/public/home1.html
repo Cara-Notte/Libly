@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Libly</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Libly</a>
+            
+            <div class="nav-center">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search books, authors, or members...">
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="about.html" class="nav-item">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+        <img id="hero-cover" src="" alt="Book cover" class="hero-cover" />
+        <div class="hero-info">
+            <h1 id="hero-title">Book Title</h1>
+            <div id="hero-genres" class="hero-genres"></div>
+            <p id="hero-description">
+                A story description will appear here...
+            </p>
+        </div>
+    </div>
+    </section>
+
+    <section class="similar-books">
+        <h2>Similar Books</h2>
+        <div id="similar-books-container" class="book-row"></div>
+    </section>
+    <script src="navigation.js"></script>
+    <script src="home1.js"></script>
+</body>
+</html>
