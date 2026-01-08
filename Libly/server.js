@@ -1578,9 +1578,6 @@ app.get('/api/stats', async (req, res) => {
   }
 });
 
-// -----------------------------------------------------------------------------
-// Root route to serve the index page
-// -----------------------------------------------------------------------------
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
