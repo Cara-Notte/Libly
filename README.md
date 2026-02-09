@@ -1,3 +1,1 @@
-dependencies </br> </br>
-
-npm install
+A library themed database system.
